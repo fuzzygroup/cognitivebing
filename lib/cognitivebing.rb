@@ -29,6 +29,9 @@ class CognitiveBing
       # do nothing
     else
       params << "&offset=#{page_count*limit}"
+      # remove the offset params that are injected somehow I don't understand
+      # "&mkt=en-US&count=33&offset=0&safesearch=Moderate&offset=66"
+      params = params.sub(/&offset=0/,'')      
     end
 
     web_search_url = ""
