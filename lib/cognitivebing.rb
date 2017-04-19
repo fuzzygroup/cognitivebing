@@ -12,7 +12,7 @@ class CognitiveBing
   end
 
 
-  def search(search_term, type = 'web')
+  def search(search_term, type = 'web', limit=10, page_count=0)
 
 
     query_string = '?q='
@@ -20,7 +20,15 @@ class CognitiveBing
     params = ""
     @params.each do |k,v|
       params << "&#{k.to_s}=#{v.to_s}"
-
+    end
+    
+    #
+    # https://msdn.microsoft.com/en-us/library/dn760787.aspx
+    #    
+    if total ==0 && page_count == 0
+      # do nothing
+    else
+      params << "&offset=#{page_count*limit}"
     end
 
     web_search_url = ""
