@@ -25,7 +25,7 @@ class CognitiveBing
     #
     # https://msdn.microsoft.com/en-us/library/dn760787.aspx
     #    
-    if total ==0 && page_count == 0
+    if page_count == 0
       # do nothing
     else
       params << "&offset=#{page_count*limit}"
